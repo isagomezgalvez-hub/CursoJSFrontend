@@ -1,22 +1,10 @@
-export default {
-	getTweets: () => {
-		return [
-			{
-				author: "@alberto",
-				message: "Lorem fistrum a peich benemeritaar amatomaa mamaar de la",
-				date: "2021-02-09 20:54:23"
-			},
-			{
-				author: "@chiquito",
-				message: "Está la cosa muy malar torpedo llevame al sircoo la caidita benemeritaar",
-				date: "2021-02-08 23:45:21"
-			},
-			{
-				author: "@chiquito",
-				message: "Está la cosa muy malar torpedo llevame al sircoo la caidita benemeritaar",
-				date: "2021-02-08 23:45:21"
-			}
-		];
-	}
+const url = 'https://gist.githubusercontent.com/kasappeal/a8724e3f1c75ba515a8d9500f4b609e7/raw/4733ee642e4cf01e95ff4284d6e252d0706804b0/fweets.json';
 
-};
+
+export default {
+	getTweets: async () => {
+		const response = await fetch(url);
+		const data = await response.json()
+		return data
+	}
+}
