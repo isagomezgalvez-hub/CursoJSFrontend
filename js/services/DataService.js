@@ -4,7 +4,12 @@ const url = 'https://gist.githubusercontent.com/kasappeal/a8724e3f1c75ba515a8d95
 export default {
 	getTweets: async () => {
 		const response = await fetch(url);
-		const data = await response.json()
-		return data
-	}
+		if (response.ok) {
+			const data = response.json()
+			return data
+		} else {
+			throw new Error(`HTTP Error: ${response.status}`)
+		}
+
+	},
 }

@@ -17,19 +17,16 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 	};
 
 	const avisarDelError = (error) => {
-		console.error('NO SE HAN PODIDO CARGAR LOS TWEETS');
+		console.error('NO SE HAN PODIDO CARGAR LOS TWEETS', error);
 	};
-
-	dataService.getTweets().then(cargarTweets).catch(avisarDelError);
-
-
 	try {
-		const response = await fetch(url);
-		const data = await response.json();
-		console.log('Estos son los datos', data)
+		const tweets = await dataService.getTweets()
+		cargarTweets(tweets);
 	} catch (error) {
-		console.error('Se ha producido un error', error)
+		avisarDelError(error)
 	}
+
+
 
 
 
