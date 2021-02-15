@@ -13,14 +13,15 @@ export default class PostsListController extends BaseController {
 	}
 
 	async loadPosts() {
-		this.loader.showLoading();
+		this.publish(this.events.START_LOADING, {});
 		try {
 			const tweets = await dataService.getTweets();
 			this.render(tweets);
 		} catch (error) {
 			console.error(error);
+			this.publish(this.events.error, error);
 		} finally {
-			this.loader.hideLoading();
+			this.publish(this.events.FINISH_LOADING, {});
 		}
 	}
 

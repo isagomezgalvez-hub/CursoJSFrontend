@@ -2,7 +2,7 @@ import PostsListController from './controllers/PostListController.js';
 import LoaderController from './controllers/LoaderController.js'
 import ErrorController from './controllers/ErrorController.js'
 
-window.addEventListener("DOMContentLoaded", async (event) => {
+window.addEventListener("DOMContentLoaded", (event) => {
 	const loader = document.querySelector(".lds-ring");
 	const loaderController = new LoaderController(loader);
 
@@ -13,7 +13,7 @@ window.addEventListener("DOMContentLoaded", async (event) => {
 
 	const errorElement = document.querySelector('.global-error');
 	const errorControler = new ErrorController(errorElement);
-	errorControler.showError('Esto es un error');
+	errorControler.showError();
 
 });
 
